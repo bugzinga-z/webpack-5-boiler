@@ -1,14 +1,14 @@
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-let mode = "development"
-let target = "web"
+let mode = "development";
+let target = "web";
 
 if (process.env.NODE_ENV === "production") {
-  mode = "production"
-  target = "browserslist"
+  mode = "production";
+  target = "browserslist";
 }
 
 module.exports = {
@@ -17,42 +17,47 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         test: /\.(s[ac]|c)ss?$/i,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "ts-loader"
-        }
-      }
-    ]
+          loader: "ts-loader",
+        },
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "A webpack project side",
-      template: "./public/index.html"
+      template: "./public/index.html",
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
   ],
   devtool: false,
   devServer: {
     contentBase: "./dist",
-    hot: true
-  }
-}
+    hot: true,
+  },
+};
