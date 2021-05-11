@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   mode: mode,
   target,
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
@@ -22,12 +22,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(s[ac]|c)?css?$/i,
+        test: /\.(s[ac]|c)?ss?$/i,
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
       },
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"

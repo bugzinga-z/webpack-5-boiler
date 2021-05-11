@@ -1,5 +1,7 @@
 import { Product } from "./product"
 import "../styles/index.scss"
+import { render } from "react-dom"
+import React from "react"
 
 function draw() {
   const el = document.createElement("div")
@@ -15,3 +17,5 @@ const p: Product = {
 }
 
 console.log(p)
+
+render(<h1>Hello React!</h1>, document.getElementById("root"))
