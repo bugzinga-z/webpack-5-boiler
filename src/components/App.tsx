@@ -1,7 +1,8 @@
 import "Styles/index.scss";
+import { ReactElement } from "react";
 import Recipes from "./Recipes";
 
-const App = () => {
+const App = (): ReactElement => {
   return (
     <>
       <section className="hero"></section>
