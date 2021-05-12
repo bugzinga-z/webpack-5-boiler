@@ -1,6 +1,6 @@
 import "../styles/index.scss";
 import { Product } from "./product";
-import React from "react";
+
 import { render } from "react-dom";
 
 function draw() {
