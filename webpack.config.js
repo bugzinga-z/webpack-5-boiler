@@ -19,6 +19,11 @@ module.exports = {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
+  resolve: {
+    alias: { Styles: path.resolve(__dirname, "./styles") },
+    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    extensions: [".tsx", ".ts", ".js"],
+  },
   module: {
     rules: [
       {
@@ -51,7 +56,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "A webpack project side",
-      template: "./public/index.html",
+      template: path.join(__dirname, "public", "index.html"),
     }),
     new MiniCssExtractPlugin(),
   ],
