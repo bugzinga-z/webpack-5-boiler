@@ -1,4 +1,5 @@
 import "Styles/index.scss";
+import Recipes from "./Recipes";
 
 const App = () => {
   return (
@@ -7,6 +8,9 @@ const App = () => {
       <main>
         <section>
           <h1>Hey, React</h1>
+        </section>
+        <section>
+          <Recipes />
         </section>
       </main>
     </>
