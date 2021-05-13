@@ -14,23 +14,39 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   mode: mode,
   target,
-  entry: "./src/index.tsx",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   resolve: {
-    alias: { Styles: path.resolve(__dirname, "./styles") },
+    alias: {
+      Styles: path.resolve(__dirname, "./assets/styles"),
+      Images: path.resolve(__dirname, "./assets/images"),
+    },
     modules: [path.resolve(__dirname, "src"), "node_modules"],
     extensions: [".tsx", ".ts", ".js"],
   },
   module: {
     rules: [
       {
+        test: /\.(png|jp(e|g|eg)|gif)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.svg$/i,
+        type: "asset/inline",
+      },
+      {
         test: /\.(s[ac]|c)ss?$/i,
         exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "",
+            },
+          },
           "css-loader",
           "postcss-loader",
           "sass-loader",
