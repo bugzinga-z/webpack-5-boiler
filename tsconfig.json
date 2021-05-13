@@ -8,7 +8,9 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["src/**/*.spec.ts", "node_modules"]
 }
